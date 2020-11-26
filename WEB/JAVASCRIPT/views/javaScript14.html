@@ -35,7 +35,7 @@
             area1.innerHTML += "myDog instanceof String : " + (myDog instanceof String) + "<br>"; 
             area1.innerHTML += "myDog instanceof String : " + (myDog instanceof Boolean) + "<br>";
 
-            area1.innerHTML += "myDog name is " + myDog.name + myDob['name'] + "<br>";
+            area1.innerHTML += "myDog name is " + myDog.name + myDog['name'] + "<br>";
         }
     </script>
     
@@ -45,7 +45,7 @@
     <p>생성자 함수에서 속성 정의시
         this. 키워드를 사용하지 않고 지역변수로 선언할경우
         캡슐화된 객체의 속성은 직접 접근할 수 없으므로
-        간접적으로 접근할 수 있도록 get/setter 메소드 정의해야함 
+        간접적으로 접근할 수 있도록 getter/setter 메소드 정의해야함 
     </p>
     <button onclick="test3();">실행확인</button>
     <div id="area3" class="area"></div>
@@ -56,7 +56,8 @@
             var color = fcolor;
             var origin = forigin;
 
-            // 클로저 setter getter
+            // this 키워드 사용해 setter/getter
+            // 클로저 활용 (지역 변수를 지우지 않고 사용하는 기능)
             this.getName = function(){
                 return name;
             }
