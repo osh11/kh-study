@@ -1,0 +1,119 @@
+/* 기본 속성 선택자 테스트 */
+/* div 중 name 속성값이 name2와 일치하는 태그 */
+div[name=name2]{
+    background-color:bisque;
+}
+
+/* div중 name 속성 안에 name1이 포함되어있는 태그(띄어쓰기로 구분) */
+div[name~=name1]{
+    background-color: sienna;
+}
+/* div 중 class 속성에서 class로 시작되는 태그 (하이픈-으로 구분) */
+div[class|=class]{
+    background-color: mediumslateblue;
+}
+
+/* div 중 name속성이 name으로 시작되는 태그 */
+div[name^=name]{
+    background-color: turquoise;
+}
+
+/* div 중 class 속성이 class로 끝나는 태그 */
+div[class$=class]{
+    color: white;
+}
+/* div 중 class 속성중에 i가 포함된 태그 */
+div[class*=i]{
+    background-color: sandybrown;
+    color: cyan;
+}
+
+/* 클래스가 div-class인 것 중 name 속성값에 name3이 포함되어 있는 경우 */
+.div-class[name~=name3]{
+    background-color: steelblue;
+}
+
+/*---------------------------------------------*/
+/*------------- 자손선택자와 후손선택자 -------------*/
+
+/* a>b : a를 부모로 가지고 있는 b 선택 */
+#test1>h4{
+    background-color: powderblue;
+    color:white;
+}
+
+#test1>ul>li{
+    background-color: thistle;
+}
+
+/* a b : a 안에 있는 모든 b 선택 */
+#test1 li{
+    color:red;
+}
+
+/*------------------------------------*/
+/*------------- 동위 선택자 -------------*/
+
+#div-test{
+    background-color: red;
+}
+/* a + b : a 선택자 바로 뒤에 있는 b 선택자 단 한개 */
+#div-test+div{
+    background-color: tomato;
+}
+/* a~b : a 선택자 뒤에 있는 모든 b 선택자 */
+/*#div-test~div{
+    background-color: cornflowerblue;
+}*/
+
+/*------------------------------------*/
+/*------------- 반응 선택자 -------------*/
+#active-test, #hover-test{
+    background-color: cornsilk;
+    width: 300px;
+    height:300px;
+}
+
+#active-test:active{
+    background-color: crimson;
+    color:yellow;
+}
+
+#hover-test:hover{
+    background-color: turquoise;
+    color:crimson;
+    cursor:pointer;
+}
+
+/*------------------------------------*/
+/*------------- 상태 선택자 -------------*/
+
+input[type='checkbox']:checked{
+    width:20px;
+    height:20px;
+}
+input[type='checkbox']:checked+label{
+    font-size:40px;
+}
+
+#userid:focus, #password:focus{
+    background: lightseagreen;
+}
+
+option:disabled{
+    background-color: lightslategray;
+    color:white;
+}
+
+option:enabled{
+    background-color: slateblue;
+    color:white;
+}
+
+button:enabled{
+    color:blue;
+}
+
+button:disabled{
+    color:red;
+}

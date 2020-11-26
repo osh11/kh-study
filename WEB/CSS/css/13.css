@@ -1,0 +1,105 @@
+.positioning {
+    border: 1px black solid;
+}
+
+.outer {
+    position: relative;
+}
+
+.first {
+    width: 300px;
+    height: 300px;
+    background: cadetblue;
+    color: white;
+}
+
+.second {
+    width: 100px;
+    height: 100px;
+    background: cornflowerblue;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+/* postion: relative로 세팅된 부모요소로부터 위에 50 왼쪽 50px */
+}
+
+.third {
+    width: 100px;
+    height: 100px;
+    background: lavender;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+}
+
+.fixed-area {
+    width: 100px; 
+    height: 100px;
+    position: fixed;
+    background: cornsilk;
+}
+.vis-test {
+    width: 100px;
+    height: 100px;
+    border:1px solid black;
+}
+
+.vis-test1{
+    background: red;
+}
+
+.vis-test2 {
+    background: crimson;
+    visibility: hidden;
+    /*display: none;*/
+}
+
+.vis-test3 {
+    background: rosybrown;
+    
+}
+
+.wrap {
+    position: relative;
+}
+
+.z-test {
+    width: 150px;
+    height: 100px;
+    border: 1px solid black;
+}
+
+.z-test1 {
+    background: yellow;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    z-index: 1000;
+}
+
+.z-test2 {
+    background: yellowgreen;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    z-index: 100;
+}
+
+.z-test3 {
+    background: springgreen;
+    z-index: 1;
+}
+
+
+.float-test {
+    border: 1px solid black;
+    width: 100px;
+    height: 50px;
+    float: left;
+}
+
+table {
+    width: 100px;
+    height: 50px;
+    float: left;
+}

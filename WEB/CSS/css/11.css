@@ -1,0 +1,38 @@
+.size-test {
+    border: 2px solid silver;
+}
+
+#test1 {
+    width: 800px;
+    height: 200px;
+}
+
+#test2 {
+    width: 50%;
+    height: 200px;
+}
+
+.block {
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+    color: white;
+}
+
+.area1{background: lavenderblush;}
+.area2{background: crimson;}
+.area3{background: paleturquoise;}
+.area4{background: gold;}
+.area5{background:silver;}
+
+.block-test{
+    display: inline;
+}
+
+.block-test2{
+    display: inline-block;
+}
+
+.block-test3 {
+    display: block;
+}

@@ -1,0 +1,85 @@
+/*------------- 일반 구조 선택자 -------------*/
+
+/* 형제 관계 태그 중 첫번째 태그 선택*/
+#test1 p:first-child{
+    background-color: crimson;
+    color:white;
+}
+/* 형제 관계 태그 중 마지막 태그 선택 */
+/* #test1 p:last-child{
+    background-color: oldlace;
+    color: crimson;
+    마지막 자식 태그가 p가 아니기 때문에 변화 없다
+}*/
+
+/* 형제 관계 태그 중 앞에서 수열번째 태그 선택 */
+#test1 p:nth-child(2n){
+    background-color: orangered;
+    color:white;
+}
+
+/* 형제 관계 태그 중에서 뒤에서 수열번째 태그 선택 */
+#test1 p:last-child(4){
+    background-color: skyblue;
+    color:white;
+}
+
+/*----------------------------------------*/
+/*------------- 형태 구조 선택자 -------------*/
+
+/* 형제 관계 태그 중 첫번째 태그 선택 */
+#test2 p:first-of-type{
+    background-color: seagreen;
+    color:white;
+}
+
+/* 형제 관계 태그 중 마지막번째 태그 선택 */
+#test2 p:last-of-type{
+    background-color: sienna;
+    color:white;
+}
+/* 형제 관계 태그 중에서 앞에서 수열번째 태그 선택 2n-1하면 홀수 */
+#test2 p:nth-of-type(2n){
+    background-color: gold;
+    color:white;
+}
+/* 형제 관계 태그 중에서 뒤에서 n번째 태그 선택*/
+#test2 p:last-last-of-type(3){
+    background-color: lightgreen;
+    color:white;
+}
+
+/*-------------------------------------*/
+/*------------- 문자 선택자 -------------*/
+
+/* 첫번째 글자 선택 */
+#test3 p::first-letter{
+    font-size: 2em;
+}
+
+/* 첫번째 줄을 선택 */
+#test3 p::first-line{
+   background-color: cornsilk;
+}
+
+/* 태그 뒤에 위치하는 공간을 선택*/
+#test3 p::after{
+    content: "@@@ 태그 뒤에 추가 @@@"
+}
+
+#test3 p::before{
+    content: "1.";
+}
+
+/* 사용자가 드래그 한 글자 선택 - 드래그해보기 */
+#test3 p::selection{
+    background-color: darkkhaki;
+    color: white;
+}
+
+/*-------------------------------------*/
+/*------------- 부정 선택자 -------------*/
+
+#test4 p:not(:nth-child(2n-1)){
+    background-color: darkturquoise;
+}

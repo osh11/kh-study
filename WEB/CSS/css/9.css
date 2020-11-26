@@ -1,0 +1,77 @@
+body {
+    /*background-color: lavenderblush;
+    background-color: rgba(153,10,160,0.7);
+    background-color: hsl(249,59%,84%,0.5);*/
+    background-color: lavenderblush;
+}
+
+#div-bg {
+    width: 50%;
+    background-color: white;
+}
+
+.div-test {
+    background-color: lemonchiffon;
+    border: 2px dashed black;
+
+    margin: 30px; /* div 영역 밖 두께 - 요소와 요소 사이의 간격 */
+    padding: 20px; /* div 영역 안 두께 */
+    width: 20%;
+    float: left;
+}
+
+#div1 {
+    background-clip: border-box; /* 기본 테두리까지 포함해서 */
+}
+#div2 {
+    background-clip: padding-box; /* 패딩까지만 */
+}
+#div3 {
+    background-clip: content-box; /* 내용만 */
+}
+
+/* 배경 이미지 */
+#bg-img {
+    width: 70%;
+    height: 800px;
+    border: 1px solid black;
+
+    background-image: url("../sample/image/bgsample.PNG");
+
+    background-repeat: repeat; /* 브라우저에 가득 찰때까지 */
+    background-repeat: repeat-x; /* 가로로만 */
+    background-repeat: repeat-y; /* 세로로만 */
+    background-repeat: no-repeat;
+
+    /*background-size: auto;
+    background-size: contain;
+    background-size: cover;
+    background-size: 150px;*/
+    background-size: 80% 80%;
+
+    /*background-position: left top;
+    background-position: right top;
+    background-position: center top;
+    background-position: right bottom;
+    background-position: center bottom;*/
+    
+    /*background-position: left center;
+    background-position: right center;*/
+    background-position: center center;
+
+    /*background-position: 30px 50px;
+    background-position: 50% 50%;*/
+
+    /*background-attachment: scroll;*/ /* 배경 이미지가 움직이게 설정 */
+    background-position: 50% 50%;
+    background-attachment: fixed;  /* 배경 이미지가 움직이지 않게 설정 */
+}
+
+#bg-all {
+    border: 1px solid black;
+    width: 100px;
+    height: 100px;
+
+    background: url("../sample/image/iconsample.PNG") no-repeat top right;
+
+}

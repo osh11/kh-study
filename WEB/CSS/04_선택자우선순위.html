@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자 우선순위</title>
+    <style>
+        h1{color: yellow}
+        h2{
+            background-color: green;
+            color: red;
+        }
+        #test1{
+            background-color: :pink;
+        }
+        #test1{
+            background-color: teal; /* 적용 안 됨 */
+            text-decoration-color: teal;
+        }
+        div{
+            width: 300;
+            height:300px;
+            background-color: orange; /* 적용 안 됨 */
+        }
+        #test2{
+            width: 300;
+            height:300px;
+            background-color: orange;
+        }
+        .test2{
+            background-color: black;
+            color: white;
+        }
+        p{
+            background-color: thistle !important;
+            color: white !important;
+            font-size:2em;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>선택자 우선순위</h1>
+    <p>기본적으로 CSS 속성은 위에서부터 아래로 적용되지만,
+        같은 태그에 다양한 선택자로 CSS 속성이 설정된 경우 우선순위에 따라 스타일 적용
+    </p>
+    <pre>
+    !important > 인라인 스타일 > 아이디 선택자 > 클래스 선택자 > 태그 선택자 순서대로 우선된다
+    아이디 선택자의 경우 : 아이디를 더 많이 사용할수록 우선순위가 높다 </pre>
+    <hr>
+    <h2>연산자 우선 순위 테스트</h2>
+    <div id="test1" class"test1" style="background-color: red;">우선순위 테스트1</div>
+    <p id="test2" class"test2" style="background-color: yellow;">우선순위 테스트2</p>
+</body>
+</html>

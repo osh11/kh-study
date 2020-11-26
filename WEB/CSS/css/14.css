@@ -1,0 +1,24 @@
+.wrap {
+    border: 1px solid black;
+    height: 300px;
+}
+
+.column1 {
+    column-width: 300px;
+    column-gap: 50px;
+    overflow: scroll;
+}
+
+.column2 {
+    column-count: 3;
+    column-rule-style: dashed;
+    overflow: scroll;
+}
+
+/* overflow 
+    표현하는 컨텐츠가 넘쳤을 때 표현하는 기법
+    scroll : 가로 세로 스크롤이 무조건 생김
+    auto : 스크롤이 내용에 따라 생김 (넘치면 생기고 안 넘치면 안 생김)
+    hidden : 넘치는 것은 보여주지 않음
+    visible : 기본 값 (넘치더라도 보여줌)
+*/

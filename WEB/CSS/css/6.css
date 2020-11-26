@@ -1,0 +1,51 @@
+#c-name {color: red;}
+#c-16{color:#ff0000}
+#c-rgb{color:rgb(255,0,0)}
+/* 0 투명 1 불투명 */
+#c-rgba{color:rgb(255,0,248,0.5)}
+/* 채도값 명도값 % */
+#c-hsl{color:hsl(360,50%,90%)}
+#c-hsla{color:hsla(360,100%,90%,0.5)}
+
+/* 텍스트 줄 표시하기/없애기 */
+#td1{text-decoration: none;}
+#td2{text-decoration: underline;}
+#td3{text-decoration: line-through;}
+#td4{text-decoration: overline;}
+
+/* 텍스트 대소문자 변경 지정 */
+#tt1 {text-transform: none;}
+#tt2 {text-transform: capitalize;}
+#tt3 {text-transform: uppercase;}
+#tt4 {text-transform: lowercase;}
+
+/* 공통 속성으로 사이즈와 두께 지정 */
+.shadow{
+    font-size: 50px;
+    font-weight: 900;
+}
+
+/* 각 그림자 효과 */
+/* 두께 어느 면적 색깔 */
+#ts1{
+    color:lavender;
+    text-shadow: 5px 5px cornflowerblue;
+}
+
+#ts2{
+    color:lightsalmon;
+    text-shadow: 0px 0px 20px orangered;
+}
+
+#ts3{
+    color:cornsilk;
+    text-shadow: 10px 10px 20px black;
+}
+
+#ts4{
+    text-shadow: 0px 0px 2px whitesmoke
+    ,0px -5px 4px moccasin
+    ,0px -10px 6px olive
+    ,0px -15px 11px orange
+    ,0px -20px 18px gray;
+}
