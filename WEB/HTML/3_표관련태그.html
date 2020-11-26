@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>표 관련 태그들</title>
+    <style>
+        table{
+            background-color: sandybrown;
+        }
+        thead{
+            background-color: lavenderblush;
+        }
+        tbody{
+            background-color: cornsilk;
+        }
+        tfoot{
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
+<body>
+     <!--
+        표 : 웹 문서에서 자료를 정리할 때 자주 사용
+             행과 열로 이루어져있고, 행과 열이 만나는 지점을 셀이라고 함.
+
+        표를 만드는 태그에는 <table>, <tr>, <th>, <td>가 있다.
+        <table></table> : 기본적인 표를 생성해주는 태그이다.
+        <tr></tr> : 표의 행을 나타내는 태그
+
+        <th></th> : 표의 제목 셀을 나타내는 태그 -> 가운데 정렬, 글자 굵게
+        <td></td> : 표의 일반 셀을 나타내는 태그
+
+        * 기본적인 구조
+        <table>
+            <tr> -> 첫번째 행은 보통 제목 셀로 지정
+                <th> </th>
+                <th> </th>
+            </tr> 
+            <tr> 
+                <td> </td>
+                <td> </td>
+            </tr>
+            <tr> 
+                <td> </td>
+                <td> </td>
+            </tr>
+        </table>
+    -->
+    <h1>기본적인 표 만들기</h1>
+
+    <table border="1"> <!-- table 태그에서 border 속성 : 표의 테두리 두께 -->
+    <!-- caption : 테이블의 제목이나 내용을 추가한느 태그 (기본 위치는 테이블 위 중앙에 위치)-->
+    <caption><b>웹 브라우저의 종류</b></caption>
+    <tr>
+        <!-- width, height 속성을 이용해 가로, 세로 길이 지정 -->
+        <th>브라우저명</th>
+        <th>제조사</th>
+        <th>홈페이지</th>
+    </tr>
+    <tr>
+        <td>익스플로러</td>
+        <td>MS</td>
+        <td>https://www.microsoft.com</td>
+    </tr>
+    <tr>
+        <td>크롬</td>
+        <td>google</td>
+        <td>https://www.google.com</td>
+    </tr>
+    <tr>
+        <td>사파리</td>
+        <td>애플</td>
+        <td>https://www.apple.com</td>
+    </tr>
+</table>
+<!-- figure 관련 태그 -- 작성하는 위치에 따라 위치가 변경 테이블 위 또는 아래 -->
+<figure>
+    <figcaption>figure을 이용해서 테이블의 설명 혹은 img의 설명에 주로 사용</figcaption>
+    <figcaption>설명 내용을 여러줄로 표기할 수 있다</figcaption>
+</figure>
+<hr>
+<!-- <td>의 태그 속성으로 테이블 각 칸을 합칠 수 있다
+     colspan 행 합치기
+     rowspan 열 합치기 -->
+<h1>표의 행과 열 합치기</h1>
+<h3>회원정보</h3>
+<table border="1"><!--tr*4>td*4--> 
+    <tr>    
+        <td colspan="2" rowspan="2" width="130px" height="130px">사진</td>
+        <!--<td></td>-->
+        <td width="80px">이름</td>
+        <td width="200px"></td>
+    </tr>
+    <tr>
+        <!--<td></td>-->
+        <!--<td></td>-->
+        <td>연락처</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td width = "70px" height ="50px">주소</td>
+        <td colspan="3"></td>
+        <!--<td></td>-->
+        <!--<td></td>-->
+    </tr>
+    <tr>
+        <td width = "70px" height ="100px">자기소개</td>
+        <td colspan="3"></td>
+        <!--<td></td>-->
+        <!--<td></td>-->
+    </tr>
+</table>
+
+<hr>
+<!--각열의 의미에 따라 thead, tbody, tfoot 태그로 구분-->
+<h2>테이블 태그의 구조설정</h2>
+<table border="1">
+    <thead style="background-color: red;">
+        <tr>
+            <td>이름</td>
+            <td>나이</td>
+            <td>주소</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>지미유</td>
+            <td>20</td>
+            <td>서울시 영등포구</td>
+        </tr>
+        <tr>
+            <td>김지섭</td>
+            <td>31</td>
+            <td>경기도 남양주</td>
+        </tr>
+        <tr>
+            <td>정봉원</td>
+            <td>50</td>
+            <td>서울시 동작구</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <th colspan="2"></th>
+            <td>3명</td>
+        </tr>
+    </tfoot>
+</table>
+</body>
+</html>

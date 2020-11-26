@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>전체</title>
+    <style>
+        #logo {
+            float: left;
+        }
+
+        #login {
+            float: right;
+        }
+
+        header>h1 {
+            float: left;
+            text-align: center;
+            margin-left: 30%;
+        }
+
+        header>ul {
+            clear: both;
+            list-style-type: none;
+        }
+
+        header>ul>li {
+            display: inline-block;
+        }
+
+        .navi{
+            list-style-type: none;
+            height: 40px;
+            padding: 0;
+            margin: 0;
+            background-color: lavenderblush;
+        }
+
+        .navi li {
+            float: left;
+            margin-left: 5%;
+            margin-right: 5%;
+            position: relative;
+            line-height: 40px;
+        }
+
+        .navi li a {
+            clear: both;
+            display: block;
+            font-weight: 600;
+            font-size: 14px;
+            color: black;
+            text-decoration: none;
+        }
+        .navi li a:hover {
+            color: coral;
+        }
+
+        .navi li ul {
+            opacity: 0;
+            position: absolute;
+            left: 0;
+            width: 180px;
+            background-color: rgba(255, 255, 255, 0.884);
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navi li:hover ul {
+            opacity: 0.7;
+        }
+
+        .navi li ul li {
+            float: none;
+            height: 0;
+            line-height: 0;
+            background: none;
+        }
+
+        .navi li:hover ul li{
+            height: 30px;
+            line-height: 30px;
+            padding: 5px 0;
+        }
+
+        .navi li ul li a {
+            background: pink;
+            font-weight: 600;
+            font-size: 14px;
+            color: cornflowerblue;
+        }
+
+        .navi li ul li a:hover {
+            background: lightblue;
+        }
+
+        section.content {
+            width: 100%;
+            height: 100%;
+            background-color: darkgray;
+            clear: both;
+        }
+
+        footer {
+            width: 100%;
+            height: 80px;
+            padding-top: 3%;
+            background: lightgray;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <img id = "logo" src="../sample/image/iconsample.PNG" width="100px" height="100px"/>
+        <h1> 신 박 기 획 </h1>
+
+        <table id = "login">
+            <tr>
+                <td>아이디</td>
+                <td><input type="id" name="id" id="id"></td>
+            </tr>
+            <tr>
+                <td>패스워드</td>
+                <td><input type="password" name="pw" id="pw"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="로그인">
+                    <input type="reset" value="취소">
+                </td>
+            </tr>
+        </table>
+
+        <ul class = "navi">
+            <li><a href="#">메인</a></li>
+            <li><a href="#">공지사항</a></li>
+            <li><a href="#">자유게시판</a>
+                <ul class>
+                    <li><a href="#">Q & A</a></li>
+                    <li><a href="#">방명록</a></li>
+                </ul></li>
+            <li><a href="1_영역관련속성.html">갤러리</a></li>
+            <li><a href="#">회원관리</a></li>
+            <li><a href="#">채팅하기</a></li>
+        </ul>
+
+    </header>
+    <section class ="content">
+        content 내용
+        <img src="../sample/image/flower1.PNG">
+    </section>
+    <footer>
+        <p align=center>Copyright © 1998-2020 KH Information Educational Institute All Right Reserved</p>
+    </footer>
+</body>
+</html>
