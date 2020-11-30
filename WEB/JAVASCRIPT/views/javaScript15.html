@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내장 객체</title>
+    <style>
+        .small{
+            height: 150px;
+        }
+        .big{
+            height: 400px;
+        }
+        .small,big{
+            background: lightgray;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>자바스크립트 내장객체</h1>
+    <h3>object 객체</h3>
+    <p> 자바스크립트의 가장 기본적인 내장 객체다. <br>
+        Object라는 생성자 함수를 통해 만들어진 인스턴스
+    </p>
+    <button onclick="test1();">실행확인</button>
+    <script>
+        function test1(){
+            //Object를 생성하는 방법
+            var obj1 = {};
+            var obj1 = new Object();
+
+            // console.log(obj1);
+            // console.log(obj2);
+            
+            console.log("obj1 자료형 : " + typeof(obj1));
+            console.log("obj2 자료형 : " + typeof(obj2));
+        }
+    </script>
+
+
+    <hr>
+    <h4>hasOwnProperty()와 propertyIsEnumerable()메소드</h4>
+    <button onclick="test2();">실행확인</button>
+    <div id ="area1" class="area"></div>
+    <script>
+        function test2(){
+            var obj = { name : "유재석" , height : 180};
+
+            var area1 = document.getElementById("area1");
+
+            //hasOwnProperty : 속성(name)을 가지고 있는지 확인하는 메소드로 true, false 리턴
+            area1.innerHTML += "name 속성을 가지고 있나? :" + obj.hasOwnProperty('name')+"<br>";
+            area1.innerHTML += "height 속성을 가지고 있나? :" + obj.hasOwnProperty('height')+"<br>";
+
+            //Enumeration 연속적인 데이터 처리가 가능한가
+            //PropertyIsEnumerable : for in 문을 통해 접근할수 있는지
+            area1.innerHTML += "name 속성은 반복문을 통해 접근 가능한가? : " + obj.propertyIsEnumerable('name')+"<br>";
+
+            for(var key in obj){
+                area1.innerHTML += key +" : "+ obj[key] + "<br>";
+            }
+
+            //defineProperty : for in 문을 통한 접근 여부 설정
+            Object.defineProperty( obj, 'name',{enumerable : false});
+            area1.innerHTML += "definePropert으로 접근 여부 설정된 name 속성은 반복문을 통해 접근 가능한가? : " + obj.propertyIsEnumerable('name')+"<br>";
+            for(var key in obj){
+                area1.innerHTML += key +" : "+ obj[key] + "<br>";
+            }
+        }
+    </script>
+
+
+    <h4>constructor()메소드</h4>
+    <p>Object가 가지는 객체 생성자 메소드이다.
+        자료형을 검사할때 사용가능
+    </p>
+    <button onclick="test3();">실행확인</button>
+    <div id = "area2" class="small"></div>
+    <script>
+        function test3(){
+            var num1 = 120;
+            var num2 = new Number(120);
+
+            console.log("num1 : "+ num1 + ", num2 : " +num2); //120, 120
+            console.log("num1 의 자료형 : "+ typeof(num1) + ", num2의 자료형 : " + typeof(num2)); //number, object
+            console.log("num1+num2 : " + (num1 + num2)); //240
+
+            console.log(num1);  //120
+            console.log(num2);  //120
+
+            // 두 대상을 같은 자료형으로 취급하고 싶을때 사용
+            area2.innerHTML +="num1.constructor == Number : " + (num1.constructor == Number) + "<br>";
+            area2.innerHTML +="num2.constructor == Number : " + (num2.constructor == Number) + "<br>";
+
+        }
+    </script>
+
+
+    <h3>Number 객체</h3>
+    <p>- toFixed 메소드</p>
+    <button onclick="test5();">실행확인</button>
+    <div id="area6" class="small"></div>
+    <script>
+    function test5() {
+        var num1 = new Number(123.456789);
+        var num2 = 123;
+
+        console.log(num1 instanceof Number); 
+        console.log(num2 instanceof Number); 
+
+        var area6 = document.getElementById("area6");
+
+        // toFixed : 숫자를 고정 소수점 자리로 나타낸 문자열을 만든다.
+        area6.innerHTML += "num1의 기본값 : " + num1 + ", 자료형 : " + typeof(num1) + "<br>";
+        area6.innerHTML += "num2의 기본값 : " + num2 + ", 자료형 : " + typeof(num2) + "<br>";
+
+        // 반올림처리
+        area6.innerHTML += "num1.toFixed(1) : " + num1.toFixed(1) + "<br>";
+        area6.innerHTML += "num1.toFixed(4) : " + num1.toFixed(5) + "<br>";
+
+        // 해당 자릿수 까지 0으로 채워짐
+        area6.innerHTML += "num2.toFixed(4) : " + num2.toFixed(5) + "<br>";
+
+        // 문자열 처리되기 때문에 String
+        area6.innerHTML += "그럼 자료형은 ? : " + typeof (num1.toFixed(1)) + "<br>"; 
+
+    }
+    </script>
+    <hr>
+
+    <h3>String 객체</h3>
+    <p>
+    String 객체의 메소드는 크게 기본메소드와 HTML요소관련 메소드로 구분할 수 있다.
+    </p>
+    <button onclick="test6();">실행확인</button>
+    <div id="area7" class="big"></div>
+    <script>
+    function test6() {
+        var str = "javascript";
+
+        var area7 = document.getElementById("area7");
+    
+        area7.innerHTML += "기본값 : " + str + "<br>";
+        area7.innerHTML += "bold() : " + str.bold() + "<br>"; 
+        area7.innerHTML += "big() : " + str.big() + "<br>";   
+        area7.innerHTML += "small() : " + str.small() + "<br>"; 
+        area7.innerHTML += "fontcolor('red') : " + str.fontcolor("red") + "<br>"; 
+        area7.innerHTML += "fontsize(20) : " + str.fontsize(20) + "<br>"; 
+        area7.innerHTML += "italics() : " + str.italics() + "<br>"; 
+        area7.innerHTML += "link(naver) : " + str.link("http://www.naver.com") + "<br>"; 
+        area7.innerHTML += "strike() : " + str.strike() + "<br>";
+        area7.innerHTML += "sub() : " + str.sub() + "<br>"; // 아래쪽
+        area7.innerHTML += "sup() : " + str.sup() + "<br>"; // 위쪽
+        str.link
+    }   
+    </script>
+    <hr>
+    
+
+    <h3>Date 객체</h3>
+    <p>날짜 관리하는 객체</p>
+    <button onclick="test7();">실행확인</button>
+    <div id="area8" class="big"></div>
+    <script>
+    function test7() {
+        var area8 = document.getElementById("area8");
+
+        var date1 = new Date(); //현재 시간
+        var date2 = new Date(2018, 0, 15); // 년월일
+        var date3 = new Date(2018, 0, 15, 17, 30, 23); // 년월일시분초
+        var date4 = new Date(2018, 0, 15, 17, 30, 23, 5000); // 년월일시분초 밀리세컨초
+
+        area8.innerHTML += "Date() : " + date1 + "<br>";
+        area8.innerHTML += "Date(2018, 0, 15) : " + date2 + "<br>";
+        area8.innerHTML += "Date(2018, 0, 15, 17, 30, 23) : " + date3 + "<br>";
+        area8.innerHTML += "Date(2018, 0, 15, 17, 30, 23, 1) : " + date4 + "<br><br>";
+
+        area8.innerHTML += "getFullYear() : " + date1.getFullYear() + "<br>";
+        area8.innerHTML += "getMonth() : " + (date1.getMonth() + 1) + "<br>";
+        area8.innerHTML += "getDate() : " + date1.getDate() + "<br>";
+        area8.innerHTML += "getDay() : " + date1.getDay() + "<br>";
+        area8.innerHTML += "getHours() : " + date1.getHours() + "<br>";
+        area8.innerHTML += "getMinutes() : " + date1.getMinutes() + "<br>";
+    }
+    </script>
+</body>
+</html>
+   

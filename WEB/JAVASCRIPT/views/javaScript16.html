@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window객체</title>
+    <style>
+        .area{
+            background: lightgray;
+            border: 1px solid black;
+            width: 300px;
+            height: 100px;
+            font-size: 40px;
+            color: red;
+        }
+        .area-big{
+            background: lightgray;
+            border: 1px solid black;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h1>window객체</h1>
+    <p>window 객체는 자바스크립트 최상위 객체이며 BOM과 DOM으로 나뉜다 <br>
+        BOM(Browser Object Model) : location객체, navigation객체, history객체, screen객체 <br>
+        DOM(Document Object Model) : document객체
+    </p>
+    <h3>window객체</h3>
+    <button onclick="test1();">네이버</button>
+    <button onclick="test2();">다음</button>
+
+    <script>
+        function test1(){
+            window.open("http://www.naver.com","네이버","resizable=no, status=no,toolbar=no");
+        }
+        function test2(){
+            window.open("http://www.daum.net","","width=500, height=300");
+        }
+            // window.open('주소', '창이름', '창의 특성');
+            // 첫째 인자값 : 열고자하는 url
+            // 둘째 인자값 : 창이름, 같은 경우엔 계속 창을 열 때 새로 열지 않고 이미 열린 창을 이용한다.
+            // 셋째 인자값 : 새로 열릴 창의 너비, 높이, 툴바, 상태바 등을 지정
+
+            // window.open("http://www.naver.com"); // 첫째 인자값만
+
+            // window.open("http://www.naver.com", "네이버"); // 둘째 인자까지
+
+            // 3번째 특성 형태 옵션
+            
+            // 0 || 1   =>  no || yes
+            // location : 주소입력란        --> opera에만 먹힘
+            // menubar : 메뉴바             --> IE --> alt눌러서 확인
+            // scrollbars : 스크롤바        --> IE, firefox에만 먹힘
+            // status : 상태 표시줄         --> IE
+            // toolbar : 도구 모음          --> IE
+            // resizable : 창 크기 조절 가능 여부    --> IE에만 먹힘
+            // 픽셀
+            // width : 창의 너비 
+            // height : 창의 높이
+
+    </script>
+
+    <h3>window 객체의 timer 관련 메소드</h3>
+    <h4>setTimeout()</h4>
+    <p>일정 시간 후 함수를 한번 실행 / id값 리턴</p>
+    <button onclick="test3();">실행확인</button>
+    <script>
+        function test3(){
+            var myWindow = window.open();
+            myWindow.alert("3초 후에 페이지를 종료 합니다. ");
+            window.setTimeout(function(){
+                myWindow.close();
+            },3000);
+        }
+    </script>
+
+
+    <h4>setInterval()</h4>
+    <p>일정 시간 후 함수를 반복 실행 / id값 리턴</p>
+    <button onclick="test4();">실행확인</button>
+    <div id = "area1" class="area1"></div>
+
+    <script>
+        function test4(){
+            var area1 = document.getElementById("area1");
+            window.setInterval(function(){
+                var date = new Date();
+                area1.innerHTML = date.getHours()+" : "+ date.getMinutes() + " : "+date.getSeconds();
+            },1000);//1초마다
+        }
+
+        // window.onload 속성
+        // 윈도우 객체가 로드가 완료되면 자동으로 Onload에 설정된 함수를 실행시키는 속성
+        // 윈도우 객체가 로드가 완료 되었다는 건 모든 태그가 화면에 나타난 때를 말함
+
+        // window.onload = function(){로직구성}; 또는
+        // 작성된 함수 호출;
+    </script>
+
+    
+
+
+    <h3>screen 객체</h3>
+    <p>웹 브라우저의 화면이 아닌 운영체제 자체의 (모니터화면 기준의) 속성을 담당하는 객체</p>
+
+    <button onclick="test5();">실행확인</button>
+    <script>
+        function test5(){
+            console.log("현재 화면의 길이 : "+ screen.width);
+            console.log("현재 화면의 높이 : "+ screen.height);
+            console.log("실제화면에서 사용가능한 길이 : "+ screen.availWidth);
+            console.log("실제화면에서 사용가능한 높이 : "+ screen.availHeight);
+            console.log("화면에서 사용가능한 색상수 : "+ screen.colorDepth);
+            console.log("한픽셀당 표현가능한 비트수 : "+ screen.pixelDepth);
+
+        }
+    </script>
+
+
+    <h3>location 객체</h3>
+    <p>브라우저 주소 표시줄과 관련된 객체</p>
+    <button onclick="test6();">실행확인</button>
+    <div id = "area6" class="area"></div>
+    <script>
+        /*
+        hash : 앵커 이름(#~)
+        host : 호스트 이름과 포트번호
+        hostname : 호스트 이름
+        href : 문서 URL주소
+        origin : 호스트이름, 프로토콜, 포트번호
+        pathname : 디렉토리 경로
+        port : 포트번호
+        protocol : 프로토콜의 종류
+        search : 요청 매개변수(?~~)
+        */
+
+        function test6(){
+            console.dir(location);
+        }
+    </script>
+
+    <button onclick="location='http://www.naver.com';">네이버로 가기</button>
+    <button onclick="location.href='http://www.naver.com';">네이버로 가기</button>
+
+    <br><br>
+    <button onclick="location=location">새로고침</button>
+    <button onclick="location.href=location.href">새로고침</button>
+    <!-- reload() : 현재 문서를 다시 로드 -->
+    <button onclick="location.reload();">새로고침</button>
+
+    <br><br>
+    <!-- assign(‘주소’) : 새로운 페이지 로드, 뒤로 가기 가능 -->
+    <!-- replace('주소') : 새로운 페이지로 교체, 뒤로 가기 불가능-->
+    <button onclick="location.assign('http://www.google.com')">구글로 가기</button>
+    <button onclick="location.replace('http://www.google.com')">구글로 가기</button>
+
+    
+    <h3>navigator 객체</h3>
+    <p>웹 페이지를 실행하는 경우 브라우저에 대한 정보를 가지는 객체</p>
+
+    <button onclick="test8();">실행확인</button>
+    <div id = "area8" class="area"></div>
+    <script>
+        function test8(){
+            var str = "";
+            for (var i in navigator){
+                str += "key : " + i + "/ value : " + navigator[i]+"<br>";
+
+            }
+            area8.innerHTML = str;
+            /*
+            - appCodeName : 브라우저의 코드 네임을 반환한다. (익스플로러 10v이하, 크롬, 파이어폭스, 사파리, 오페라 모두 브라우저 Mozilla)
+            - appName : 브라우저의 이름을 반환한다.  (익스플로러 11v, 크롬, 파이어폭스와 사파리는 모두 "Netscape")
+            - appVersion : 브라우저의 버전 정보를 반환한다. 
+            - userAgent : 브라우저가 서버로 보낸 user-agent 헤더 값을 반환한다. 
+            - cookieEnabled : 브라우저에서 쿠기가 가능한지 확인한다. 
+            - geolocation : 사용자의 위치를 찾는데 사용되는 Geolocation 객체를 반환한다. 
+            - language : 브라우저의 언어를 반환한다. 
+            - onLine : 브라우저가 온라인인지 여부를 확인한다. 
+            - platform : 브라우저의 플랫폼을 반환한다. 
+            - product : 브라우저의 엔진 이름을 반환한다.
+            */
+            console.log("브라우저언어 : " + navigator.language);
+        }
+    </script>
+    
+    <h1>Geolocation (지오로케이션)</h1>
+    <h3>현재위치 가져오기</h3>
+    <p>getCurrentPosition()을 호출하여 사용자의 현재위치를 가져온다 응답은 빠르지만 정확도는 낮다</p>
+
+    <button onclick="test9();">실행확인</button>
+    <script>
+
+        /*
+          timestamp : 위치 수집한 시간표현
+          coords : 현재위치를 정의하는 객체
+          latitude : 위도, 소수점을 포함하는 숫자
+          longitude : 경도, 소수점을 포함하는 숫자
+        */ 
+
+        function test9(){
+            navigator.geolocation.getCurrentPosition(function(position){
+                alert("위도 : " + position.coords.latitude + "\n"
+                    + "경도 : " + position.coords.longitude );
+                
+                var lat = position.coords.latitude;
+                var lon = position.coords.longitude;
+
+                location.href = "http://map.daum.net/link/map/나의위치,"+lat + "," + lon;
+            
+                });
+                    //var dday = end.getTime() - start.getTime();
+
+                    //dday = dday / 1000;  // 초단위 (1000 밀리세컨초 == 1초)
+                    //dday = dday / 1000 / 60; // 분단위 (60초 == 1분)
+                    //dday = dday / 1000 / 60 / 60; // 시단위 (60분 == 1시간)
+                    //dday = dday / 1000 / 60 / 60 / 24; // 일단위 (24시간 == 1일)
+                    //dday = Math.floor(dday / (1000 * 60 * 60  * 24));
+        }
+    </script>
+</body>
+</html>      
