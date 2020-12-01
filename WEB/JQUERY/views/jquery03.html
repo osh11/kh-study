@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>입력 양식 필터 선택자1</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>입력 양식 필터 선택자</h1>
+	<p>input 태그의 type속성에 따라 문서 객체 선택 가능</p>
+	<label>텍스트상자 : </label><input type="text"><br>
+	<label>버튼 : </label><input type="button"><br>
+	<label>체크박스 : </label><input type="checkbox"><br>
+	<label>파일 : </label><input type="file"><br>
+	<br>
+	<label>이미지 : </label><input type="image" src="../image/flower1.PNG"><br>
+	<br>
+	<label>패스워드 : </label><input type="password"><br>
+	<label>라디오버튼 : </label><input type="radio"><br>
+	<label>리셋버튼 : </label><input type="reset"><br>
+    <label>submit버튼 : </label><input type="submit"><br>
+
+    
+    <script>
+        $(function(){
+            $("input:text").css("background","cornflowerblue");
+        });
+        $(function(){
+            $("input:button").attr("value","왕버튼").css({"width":"200px","height":"100px"});
+        });
+        $(function(){
+            $("input:checkbox").attr("checked",true).css({"width":"50px","height":"50px"});
+        });
+
+        $(function(){
+            $("input:file").css("background","ivory");
+        });
+
+        $(function(){
+            $("input:image").mouseenter(function(){
+                $(this).attr("src","../image/river1.png");
+            })
+            $("input:image").mouseout(function(){
+                $(this).attr("src","../image/flower1.png");
+            })
+        });
+
+        $(function(){
+            $("input:password").css("background","cornflowerblue");
+        });
+        $(function(){
+            $("input:radio").attr("checked",true);
+        });
+        $(function(){
+            $("input:reset").css({"background":"crimson","color":"ivory"});
+        });
+        $(function(){
+            $("input:submit").css({"background":"lavenderblush","color":"crimson"});
+        });
+
+    </script>
+</body>
+</html>

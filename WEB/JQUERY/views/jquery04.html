@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>입력 양식 필터 선택자2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    
+	<h1>입력 양식 필터 선택자</h1>
+	<h3>checkbox 의 상태에 대한 선택자</h3>
+	<label>취미 : </label>
+	<input type="checkbox" name="hobby" value="game" id="game">
+	<label for="game">게임</label>
+	<input type="checkbox" name="hobby" value="movie" id="movie">
+	<label for="movie">영화</label>
+	<input type="checkbox" name="hobby" value="music" id="music">
+    <label for="music">음악</label>
+    
+    <script>
+        $("input:checkbox").change(checkedChange);
+
+        //change : 어떤 값이 변경되었을 때 그 시점을 감지하는 이벤트
+
+        function checkedChange(){
+            console.log($(this).prop("checked"));
+            
+            //attr(), prop()
+            //attr('속성명') : 속성명에 대한 값을 가져오는 getter메소드
+            //attr('속성명','값') : 속성의 값을 바꾸는 setter
+            //prop() : 속성여부를 true/false로 지정하는 속성의 변경 및 조회시 사용
+            
+            //attr()/prop()의 차이
+            //attr() : width,height 등 값이 여러 개로 바뀔 수 있는 속성 정의
+            //prop() : checked, required, enabled처럼 참과 거짓으로 나뉘는 속성을 정의할 때 사용한다.
+
+            if($(this).prop("checked"))
+                $(this).css({"width":"50px","height":"50px"});
+            else
+                $(this).css({"width":"15px","height":"15px"});
+        };
+    </script>
+	
+	<hr>
+	
+	<h3>select > option 태그의 상태에 대한 선택자</h3>
+	<select id="national">
+		<option value="한국" selected>한국</option>
+		<option value="미국">미국</option>
+		<option value="일본">일본</option>
+		<option value="중국">중국</option>
+	</select>
+    <label>선택한 나라 : </label><input type="text" id="result">
+    
+    <script>
+        //input태그, option태그와 같이
+        //value라는 속성을 가진 태그들은
+        //.val()이란 형태로 함수를 사용할 수 있다.
+        //.val() : getter(현재 값을 읽어온다.)
+        //.val('값') : setter(현재 값을 특정 값으로 변경)
+
+        $(selectChange); //함수 호출 먼저 해서 처음부터 값이 있는 상태로 시작
+        $("#national").change(selectChange); //select id = "national"인 것의 값이 바뀌는 것에 따라
+
+        function selectChange(){
+            var value = $("option:selected").val(); //선택된 옵션태그의 벨류 값을 가져와서 변수 value에 담고
+            $("#result").val(value); //아이디 result의 값을 변수에 담은 value로 변경
+        }
+    </script>
+	
+	
+	<hr>
+	
+	<h3>input 상태에 대한 선택자</h3>  <!-- disabled 비활성화 , enabled 는 디폴트 라서 따로 작성해주지않아도됨 -->
+	<label>활성화 버튼 : </label><input type="button" value="활성화"><br>
+	<label>활성화 텍스트상자: </label><input type="text"><br>
+	<label>비 활성화 텍스트상자: </label><input type="text" disabled><br> 
+    <label>비 활성화 버튼 : </label><input type="button" value="비활성화" disabled><br>
+    
+    <script>
+        $(function(){
+            $("input:enabled").css("background","cornflowerblue");
+            $("input:disabled").css("background","crimson");
+        });
+    </script>
+	
+	
+	<hr>
+	
+	<h3>필터 선택자</h3>
+	<table border="1">
+		<tr><th>이름</th><th>혈액형</th><th>지역</th></tr>
+		<tr><td>유재석</td><td>AAA형</td><td>남양주</td></tr>
+		<tr><td>이효리</td><td>AB형</td><td>안산</td></tr>
+		<tr><td>화   사</td><td>B형</td><td>전주</td></tr>
+		<tr><td>제   시</td><td>B형</td><td>인천</td></tr>
+		<tr><td>엄정화</td><td>A형</td><td>서울</td></tr>
+		<tr><td>김종민</td><td>O형</td><td>수원</td></tr>
+		<tr><td colspan="2">총원</td><td>6</td></tr>
+	</table>
+    <script>
+        $(function(){
+            $("tr:odd").css("background","white");
+            $("tr:even").css("background","lightgray");
+            $("tr:first").css("background","black").css("color","white");
+            $("tr:last").css("background","orangered").css("color","white");
+        });
+    </script>
+    <hr>
+</body>
+</html>

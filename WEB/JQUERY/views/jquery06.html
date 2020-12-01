@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>필터링 메소드</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>필터링 메소드</h1>
+    <h3>filtering 메소드의 사용법</h3>
+    <p>
+        선택자로 지정한 객체를 기준으로 <br>
+        객체 그룹에서 위치를 가지고 필터를 사용해서 문서의 객체를 선택
+    </p>
+    <h4 class="test">테스트 - 1</h4>
+    <h4 class="test">테스트 - 2</h4>
+    <h4 class="test">테스트 - 3</h4>
+    <h4 class="test">테스트 - 4</h4>
+    <h4>테스트 - 5</h4>
+    <h4 class="test">테스트 - 6</h4>
+    <script>
+         $(function(){
+             //짝수번째 배경색과 컬러 변경 0부터 시작
+            $("h4:even").css("background","black");
+            $("h4:even").css("color","white");
+
+            $("h4").filter(":even").css({"background":"cornflowerblue","color":"white"});
+
+            //함수를 매개변수로 하는 filter()메소드 사용
+            //$('요소명').filter('검색식|선택자')
+            //인자 값과 일치하는 요소 리턴
+            $("h4").filter(function(index){
+                    return index % 2 == 1;
+            }).css({'background':'crimson','color':'black'});
+
+            //선택된 요소 중 제일 처음에 있는 요소 리턴
+            $("h4").first().css("font-size","1.5em");
+
+            //선택된 요소 중 제일 마지막에 있는 요소 리턴
+            $("h4").last().text("마지막요소");
+
+            //인덱스 번호와 일치하는 요소만 리턴(0부터 시작)
+            $("h4").eq(4).text("eq()로 선택");
+
+            //선택된 요소와 일치하지 않는 요소 리턴
+            $("h4").not(".test").css({"background":"lavender","color":"black"});
+
+         });
+    </script>
+</body>
+</html>
