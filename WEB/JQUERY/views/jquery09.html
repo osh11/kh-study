@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>순회(탐색) 메소드 - Sideway</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        .wrap, .wrap * {
+            border:1px solid lightgray;
+            display:block;
+            padding: 5px;
+            margin:15px;
+            color:gray;
+        }
+    </style>
+</head>
+<body>
+    <h1>순회(탐색)메소드</h1>
+    <h3>sideways 메소드</h3>
+    <div class="wrap">div (parent)
+        <p>p</p>
+        <span>span</span>
+        <h2>h2</h2>
+        <h3>h3</h3>
+        <p>p</p>
+    </div>
+    <script>
+        $(function(){
+            // 선택된 요소와 같은 레벨에 있는 요소 리턴
+            $("h2").siblings().css({"color":"red","border":"2px solid red"});
+
+            // 인자가 있는 경우 인자와 일치하는 요소 리턴
+            $("h2").siblings("p").css({"color":"orange","border":"2px solid orange"});
+
+            // 선택된 요소의 같은 레벨의 형제들 중에서 선택된 요소 다음 한개의 요소 리턴
+            $("h2").next().css({"color":"cornflowerblue","border":"2px solid cornflowerblue"});
+
+            // 선택된 요소의 같은 레벨의 형제들 중에서 선택된 요소 다음 모든 요소 리턴
+            $("h2").nextAll().css({"font-size":"2em"});
+
+            //선택된 요소부터 같은 레벨의 인자 범위까지 모든 요소를 리턴
+            //$("").nextUntil("") 사이에 있는
+            $("h2").nextUntil("p").css({"border":"dashed"});
+
+             // 선택된 요소의 같은 레벨의 형제들 중에서 선택된 요소 이전 한개의 요소 리턴
+            $("h2").prev().css("background","yellow");
+
+            // 선택된 요소의 같은 레벨의 형제들 중에서 선택된 요소 이전의 모든 요소 리턴
+            $("h2").prevAll().css({"background":"crimson","color":"white"});
+
+            //선택된 요소의 같은 레벨의 형제들 중에서 인자로 전달된 이전의 요소 사이의 요소 리턴
+            $("h2").prevUntil("p").css({"border":"dashed"});
+
+        });
+    </script>
+</body>
+</html>
