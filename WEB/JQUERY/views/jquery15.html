@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>이벤트 연결 메소드</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        .outer {
+            width : 200px;
+            height : 200px;
+            background : cornflowerblue;
+            padding : 50px;
+        }
+
+        .inner {
+            width : 100%;
+            height : 100%;
+            background: goldenrod;
+        }
+
+        .reverse {
+            background : black;
+            color : white;
+        }
+    </style>
+</head>
+<body>
+    <h1>이벤트 연결 메소드</h1>
+    <p>
+        mouseenter : 이벤트 대상에 마우스가 올라오면 발생 (하위요소에 영향받지 않음)<br>
+        mouseleave : 이벤트 대상에서 마우스가 완전히 벗어나면 발생 (하위요소에 영향받지 않음)<br>
+        mouseout : 이벤트 대상에서 마우스가 벗어나면 발생 (하위요소에 영향받음)<br>
+        mouseover : 마우스의 위치가 요소 위에 존재하면 발생 (하위요소에 영향받음)<br>
+    </p>
+    <h3>mouseover와 mouseenter</h3>
+    <div class="outer">
+        <div class="inner"></div>
+    </div>
+    <script>
+        $(function(){
+            $(".outer").mouseover(function(){
+                console.log("OVER!")
+            });
+            $(".outer").mouseenter(function(){
+                console.log("ENTER!")
+            });
+            $(".outer").mouseout(function(){
+                console.log("OUT!")
+            });
+            $(".outer").mouseleave(function(){
+                console.log("LEAVE!")
+            });
+        });
+    </script>
+
+    <h3>키보드 이벤트</h3>
+    <p>
+        keydown : 키보드가 눌려질 때 <br>
+        keypress : 글자가 입력될 떄 <br>
+        keyup : 키보드가 떼어질 때
+    </p>
+    <h4>동적으로 글자수 세기</h4>
+        <div>
+            <h1 id="counter">150</h1>
+            <textarea cols="70" rows="5"></textarea>
+    </div>
+    <script>
+        $(function(){
+            $("textarea").keydown(function(){
+                var inputlength = $(this).val().length;
+                var remain = 150-inputlength;
+
+                $("#counter").html(remain);
+
+                if(remain >= 0){
+                    $("#counter").css("color","cadetblue")
+                }else{
+                    $("#counter").css("color","crimson")
+                }
+            });
+        });
+    </script>
+</body>
+</html>
