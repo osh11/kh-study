@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>이벤트</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        #test2, #test3{
+            width: 300px;
+            height: 300px;
+            background: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <h1>이벤트</h1>
+    <h3>이벤트 관련 속성</h3>
+    <p>
+        이벤트 정보는 
+        자바스크립트 내장 객체인 event객체를 통해 확인가능
+    </p>
+    <button onclick = "test1(event)">실행확인</button>
+    <script>
+        function test1(event){
+            console.log(event);
+        }
+    </script>
+    <hr>
+    <h3>이벤트 연결 종류</h3>
+    <h4>
+        bind() : 현재 존재하는 요소를 이벤트와 연결할 때 사용하는 함수<br>
+        unbind() : 현재 연결된 이벤트를 제거하는 함수
+    </h4>
+    <h1 id="test1">마우스를 올려보세요</h1>
+    <script>
+        $(function(){
+            //이벤트를 연결(바인딩)
+            $("#test1").bind("mouseenter",function(){
+                /* 마우스엔터는 마우스 들어갔을 때 */
+                $(this).css({"background":"black","color":"white"});
+            }).bind("mouseleave",function(){
+                $(this).css({"background":"white","color":"black"});
+            });
+            $("#test1").bind("click",function(){
+                    $(this).unbind("mouseenter").unbind("mouseleave").css({'background':'crimson','color':'gold'});
+            });
+        });
+    </script>
+
+    <h4>on() : bind() 대신 on()으로 대체<br>
+        off() : on()으로 연결된 이벤트 제거
+    </h4>
+    <div id="test2">기본상태</div>
+    <script>
+        $(function(){
+            $("#test2").on({
+                "mouseenter":function(){
+                    $(this).css("background","cornflowerblue").text("마우스가 올라감");
+                },"mouseleave":function(){
+                $(this).css("background","lavender").text("마우스가 내려감");
+            },"click":function(){
+                $(this).off("mouseenter").off("mouseleave").css("background","crimson").text("마우스가 클릭됨");
+                }
+            });
+        });
+    </script>
+    <br>
+
+    <div id="test3">기본상태</div>
+    <script>
+        $(function(){
+            $("#test3").on("click",{name:"유재석", age:12}, function(event){
+                alert(event.data.age+"님 환영합니다.");
+                console.log(event);
+            });
+        });
+    </script>
+
+    <div id="wrap">
+        <h2>Header</h2>
+    </div>
+    <script>
+        $(function(){
+            //$("#h2").on("click", function(){
+                $(document).on("click", function(){
+                $("#wrap").append("<h2>Header</h2>")
+            });
+        });
+    </script>
+
+    <h3>one()메소드</h3>
+    <p>이벤트를 한번만 연결할 때 사용한다</p>
+    <h1 id="test4">클릭해보세요!</h1>
+    <script>
+        $(function(){
+            $("#test4").one("click", function(){
+                alert("이벤트 발생");
+            });
+        });
+    </script>
+</body>
+</html>
