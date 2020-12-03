@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>객체 생성 및 제거 메소드</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
+    .item {
+        width:200px;
+        height:200px;
+        display:inline-block;
+        margin:5px;
+    }
+    #item1 {
+        background:yellowgreen;
+    }
+    #item2 {
+        background:cyan;
+    }
+    #item3 {
+        background:blue;
+    }
+</style>
+</head>
+
+<body>
+    <h1>객체 생성 및 제거</h1>
+    <h3>삽입메소드 part1</h3>
+    <p>$(A).appendTo(B) : A를 B의 요소 내 뒷부분에 추가<br>
+    $(A).prependTo(B) : A를 B의 요소 내 앞부분에 추가<br>
+    $(A).insertAfter(B) : A를 B의 요소 뒤에 추가<br>
+    $(A).insertBefore(B) : A를 B의 요소 앞에 추가
+    </p>
+    <h1 id="test1"><label>여행가고싶다</label></h1>
+    <h1 id="test2"><label>치킨먹고싶다</label></h1>
+    <h1 id="test3"><label>여행가고싶다</label></h1>
+    <h1 id="test4"><label>치킨먹고싶다</label></h1>
+    <script>
+        //setTimeout(실행할 코드, 지연시간) : 지연시간 후 한번 실행하고 종료
+        //setInterval(실행할 코드, 지연시간) : 지연시간마다 실행할 코드 호출
+        //clearInterval(setInterval의 이름) : 실행중인 setInterval 중지
+        $(function(){
+            var interval = setInterval(function(){
+                $("<lavel>제주도로</label>").appendTo($("#test1"));
+                $("<lavel>오늘</label>").prependTo($("#test2"));
+                $("<lavel>하와이로</label>").insertAfter($("#test3"));
+                $("<lavel>지금</label>").insertBefore($("#test4"));
+                setTimeout(function(){
+                    clearInterval(interval);
+                },5000);
+
+            },1000);
+        });
+    </script>
+
+    <hr>
+    <h3>삽입메소드 part</h3>
+    <p>$(A).append(B) : A를 B의 요소 내 뒷부분에 추가<br>
+        $(A).prepend(B) : B를 A 요소 내 앞부분에 추가<br>
+        $(A).after(B) : B를 A 요소 뒤에 추가<br>
+        $(A).before(B) : B를 A 요소 앞에 추가
+    </p>
+    
+    <h1 id="test5"><label>상어가족 : </label></h1>
+    <h1 id="test6"><label>상어가족 : </label></h1>
+    <h1 id="test7"><label>상어가족 : </label></h1>
+    <h1 id="test8"><label>상어가족 : </label></h1>
+
+    <script>
+        $(function(){
+            var str = "뚜루 두 뚜두~ "
+			var arr = ["아기 상어! ", "귀여운 ", "바닷속 ", "아기 상어! "];
+			var arr2 =["아빠 상어! ", "힘이 센 ", "바닷속 ", "아빠 상어! "];
+			
+			var ctn = 0;
+			
+			var interval = setInterval(function(){
+				$("#test5").append("<label>" + arr[ctn] + str + "</label>");
+				$("#test6").prepend("<label>" + arr2[ctn] + str + "</label>");
+				$("#test7").after("<label>" + arr[ctn] + str + "</label>");
+				$("#test8").before("<label>" + arr2[ctn] + str + "</label>");
+				
+				ctn++;
+				
+				setTimeout(function(){
+					clearInterval(interval);
+				}, 3000);
+			}, 1000);
+
+        });
+    </script>
+
+    <h3>객체의 복사와 제거 메소드</h3>
+    <p>
+        clone() : 지정한 객체 (요소)를 복사할 때 사용한다. <br>
+        remove / detach() / empty() : 객체요소를 제거하거나 내용을 비울때 사용한다.
+    </p>
+    <div id = "cloneTest">
+        <div id="item1" class="item"><button class="copy">복사하기</button><button class="delete"">삭제하기</button></div>
+        <div id="item2" class="item"><button class="copy">복사하기</button><button class="delete"">삭제하기</button></div>
+        <div id="item3" class="item"><button class="copy">복사하기</button><button class="delete"">삭제하기</button></div>
+    </div>
+
+    <div id="result"></div>
+    
+    <script>
+        $(function(){
+            $('.copy').click(function(){
+                //clone() : 요소의 틀만 복사 (이벤트, 데이터 정보는 복사x)
+                //clone(true/false) : 이벤트까지 같이 복사할 경우 true
+                //                    이벤트 복사 안 하는 경우 false (디폴트 값)
+                $(this).parent().clone(false).appendTo($("#result"));
+            });
+
+            $(".delete").click(function(){
+                //$(this).parent().remove();
+                //$(this).parent().detach();
+
+                $(this).parent().empty();   //요소 안을 비울 때 사용
+            });
+        });
+    </script>
+
+</body>
+</html>
