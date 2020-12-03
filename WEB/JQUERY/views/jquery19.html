@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>시각적 효과</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>시각적 효과</h1>
+    <h3>show(), hide()</h3>
+    <P>문서 객체를 크게 하며 보여주거나 작게하며 사라지게 한다.</P>
+    <button id="show">보여주기</button>&nbsp;&nbsp;&nbsp;
+    <button id="hide">숨기기</button><br>
+    <img src="../image/river1.PNG" id="river">
+    <hr>
+    <script>
+        $(function(){
+            $('#show').click(function(){
+                $('#river').show();
+            });
+            $('#hide').click(function(){
+                $('#river').hide();
+            });
+        });
+    </script>
+    <br>
+    <h3>toggle() : show()와 hide()를 번갈아 실행하는 함수</h3>
+    <button id="toggle">토글하기</button>
+    <br>
+    <img src="../image/forest1.PNG" id="forest">
+    <script>
+        $(function(){
+            // 토글 직접 구현
+           
+            $('#toggle').click(function(){
+                //$('#flower1').toggle();
+                $('#forest').toggle(3000,function(){
+                    alert('토글 기능 실행 확인');
+                });
+            });
+        });
+    </script>
+    <hr>
+
+    <h3>slideDown()과 slideUp() 함수</h3>
+
+    <div class="menu">반품 언제 되나요?</div>
+    <p class="content">지금확인중입니다.</p>
+    <div class="menu">상품위치를 확인하고 싶습니다.</div>
+    <p class="content">배송조회로 확인 부탁드립니다.</p>
+    <script>
+        $(function(){
+            //$('.content').slideUp();
+
+            $('.menu').click(function(){
+                //$(this).next('p').slideDown();
+                $(this).next('p').slideToggle(1000,function(){
+                    alert("슬라이드 토글 확인");
+                });
+               
+            });
+        });
+    </script>
+
+    <h3>fadeIn(), fadeOut()</h3>
+    <button id="fadeIn">fadeIn()</button>&nbsp;&nbsp;
+    <button id="fadeOut">fadeOut()</button>
+    <br>
+    <br>
+    <img src="../image/flower2.PNG" id="flower2">
+    <script>
+        $(function(){
+                $('#fadeIn').click(function(){
+                $('#flower2').fadeIn(1500);
+            });
+
+            $('#fadeOut').click(function(){
+                $('#flower2').fadeOut(1500);
+            });
+        });
+    </script>
+    <br>
+    <br>
+    <button id="fadeToggle">fadeToggle()</button>
+    <br>
+    <br>
+    <img src="../image/flower3.PNG" id="flower3">
+    <script>
+        $(function(){
+            $('#fadeToggle').click(function(){
+                $("#flower3").fadeToggle(1500);
+                alert("페이드 토글 확인");
+            });
+        });
+    </script>
+
+</body>
+</html>
