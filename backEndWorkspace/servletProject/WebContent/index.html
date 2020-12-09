@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- 
+		톰캣 설치
+		
+		java ee 환경으로 설정
+		
+		1. 인코딩 설정(영어, 숫자, 한글 등 모든 문자셋을 사용할 수 있도록)
+		2. 필요한 환경 셋팅 (navigator, problems, servers, console)
+		2. 서버 runtime 잡기 (이클립스에 서버를 연동하는 과정)
+		3. 서버 생성하기
+			포트번호 만들기 (톰캣 기본 포트랑 오라클 기본포트가 동일하게 8080이기 때문에 둘중 하나를 바꿔줘야됨
+			server publishing 체크하기 
+			
+		4. dynamic Project 만들기
+		
+		 - 프로젝트 명 신중하게 
+		 - output folder : 컴파일된 클래스 파일들이 들어갈 곳 지정 -> 변경하는 이유는 실제로 배포될 폴더 안에 해당 컴파일된 클래스 파일들이 있어야된다. 
+		 												   배포될 폴더가 WebContent 폴더라서 그 안에 WEB-INF라는 설정 정보들을 담을 폴더 안에 classes 폴더로 경로 잡는 것
+		 - context Root : 하나의 서버로 여러 애플리케이션을 관리할 수 있음. 따라서 해당 애플리케이션에 접근하는 경로로 사용될 별칭같은 것 (각 애플리케이션을 구분하기 위한 용도)
+		 - context directory : contextRoot가 가리킬 폴더 즉, 배포되는 폴더의 최상위 폴더를 지정하는 것
+		 
+		 - Generate ~ 무조건 체크! : 배포 서술자라고 해서 애플리케이션에 대한 전체 설정 정보를 가지고 있는 파일인 web.xml이라는 파일이 있다. 얘를 만들기 위해선 꼭 체크해야된다.
+		 						   물론 해당 그 파일을 수정한다거나 건들일이 없으면 안만들어져도 된다. 내부적으로 기본적인 web.xml이 자동으로 실행되는데
+		 						   혹시나 수정을 한다거나 내가 작업할 일이 있을 경우를 대비해서 만들어두는 것!!
+-->
+	<h1>어서와 Web은 처음이지?</h1>
+	<h2>Servlet</h2>
+	<p>
+		서블릿이란, 웹 서비스를 위한 자바 클래스를 의미하며 자바를 사용해 웹을 만들기위해 필요한 기술이다.<br>
+		-> 사용자의 요청을 받아 처리하고 그 결과에 해당하는 응답페지를 만들어 다시 사용자에게 전송하는 역할을 하는 class<br>
+		-> 즉, 웹에서 동적인 페이지를 Java로 구현할 수 있게 도와주는 서버측 프로그램 (톰캣서버에서 구동)<br>
+		-> 기존의 java 파일에 웹페이지 구현을 위한 html이 들어간 구조<br>
+	</p>
+	<!-- 서블릿 연결시 자바파일을 화면에 연결하는 방법
+		1. @WebServlet("url-주소") 형태로 등록하는 방법
+		2. web.xml 에서 서블릿 클래스를 등록하는 방법
+	-->
+	<!-- @WebServlet -->
+	<form action="/dev/test.do" method="get">
+		<button type="submit"> WebServlet요청 </button>
+	</form>
+	
+	<!-- web.xml -->
+	<form action="test2" method="get">
+		<button type="submit"> web.xml요청 </button>
+	</form>
+	
+	<h3><a href="views/testServlet1.html">Servlet-GET방식</a></h3>
+	<h3><a href="views/testServlet2.html">Servlet-POST방식</a></h3>
+	<h3><a href="views/testServlet3.html">Servlet-JSP</a></h3>
+	
+</body>
+</html>
