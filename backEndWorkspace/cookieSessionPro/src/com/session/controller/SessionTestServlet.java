@@ -1,8 +1,7 @@
-package com.kh.servlet.controller;
+package com.session.controller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,20 +9,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.kh.servlet.model.service.MemberService;
-import com.kh.servlet.model.vo.Member;
-
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class SessionTestServlet
  */
-@WebServlet("/login.do")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/sessionTest.do")
+public class SessionTestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public SessionTestServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,26 +29,12 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String userId = request.getParameter("userId");
-		String password = request.getParameter("password");
 		
-		Member m = new MemberService().login(userId, password);
+		HttpSession session = request.getSession();
+		session.setMaxInactiveInterval(600);//10분
+		session.setAttribute("testValue", "값 확인" + session.getId());
 		
-		
-		String view = "";
-		if(m != null) {	//로그인 성공
-			
-			//1.session에 값을 저장
-			HttpSession session = request.getSession();
-			session.setAttribute("loginedMember", m);
-			
-			view = "mainView.do";
-		}else {
-			view = "";
-		}
-		
-		RequestDispatcher rd = request.getRequestDispatcher(view);
-		rd.forward(request, response);
+		response.sendRedirect(request.getContextPath());
 		
 	}
 

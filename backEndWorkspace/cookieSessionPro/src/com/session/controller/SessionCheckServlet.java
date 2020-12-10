@@ -1,8 +1,8 @@
-package com.kh.servlet.controller;
+package com.session.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,20 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.kh.servlet.model.service.MemberService;
-import com.kh.servlet.model.vo.Member;
-
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class SessionCheckServlet
  */
-@WebServlet("/login.do")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/sessionCheck.do")
+public class SessionCheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public SessionCheckServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,27 +30,17 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String userId = request.getParameter("userId");
-		String password = request.getParameter("password");
+		HttpSession session = request.getSession(false);	//세션 값이 있으면 가져오고 없으면 null 전송
 		
-		Member m = new MemberService().login(userId, password);
-		
-		
-		String view = "";
-		if(m != null) {	//로그인 성공
-			
-			//1.session에 값을 저장
-			HttpSession session = request.getSession();
-			session.setAttribute("loginedMember", m);
-			
-			view = "mainView.do";
-		}else {
-			view = "";
-		}
-		
-		RequestDispatcher rd = request.getRequestDispatcher(view);
-		rd.forward(request, response);
-		
+		String html="<html>";
+		html+="<body>";
+		html+="<h1>세션값확인</h1>";
+		html+="<p>세션값 : "+session.getAttribute("testValue")+"</p>";
+		html+="</body>";
+		html+="</html>";
+		response.setContentType("text/html;charset=utf-8;");
+		PrintWriter out=response.getWriter();
+		out.print(html);
 	}
 
 	/**
